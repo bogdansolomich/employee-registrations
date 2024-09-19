@@ -1,11 +1,17 @@
-import "./app.css";
-import AppInfo from "../app-info/app-info";
-import SearchPanel from "../search-panel/search-panel";
-import AppFilter from "../app-filter/app-filter";
-import EmployeesList from "../employees-list/employees-list";
-import EmployeesAddForm from "../employees-add-form/employees-add-form";
+import './app.css';
+import AppInfo from '../app-info/app-info';
+import SearchPanel from '../search-panel/search-panel';
+import AppFilter from '../app-filter/app-filter';
+import EmployeesList from '../employees-list/employees-list';
+import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 function App() {
+  const data = [
+    { names: 'Andrey', salary: 1100, increase: true },
+    { names: 'Maxim', salary: 2000, increase: false },
+    { names: 'Oleg', salary: 1100, increase: false },
+  ];
+
   return (
     <div className="app">
       <AppInfo />
@@ -13,7 +19,7 @@ function App() {
         <SearchPanel />
         <AppFilter />
       </div>
-      <EmployeesList />
+      <EmployeesList data={data} />
       <EmployeesAddForm />
     </div>
   );
