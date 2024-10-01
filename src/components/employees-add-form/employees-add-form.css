@@ -15,3 +15,7 @@
   width: 350px;
   margin-right: 20px;
 }
+
+.error-message {
+  color: yellow;
+}

@@ -7,30 +7,41 @@ class EmployeesAddForm extends Component {
     this.state = {
       names: '',
       salary: '',
+      errorMessage: '',
     };
   }
 
   onChangeValue = e => {
     this.setState({
       [e.target.name]: e.target.value,
+      errorMessage: '',
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
+    if (this.state.names < 3 || !this.state.salary) {
+      this.setState({ errorMessage: 'Заполните данные...' });
+      return;
+    }
     this.props.onAdd(this.state.names, this.state.salary);
     this.setState({
       names: '',
       salary: '',
+      errorMessage: '',
     });
   };
 
   render() {
-    const { names, salary } = this.state;
+    const { names, salary, errorMessage } = this.state;
 
     return (
       <div className="app-add-form">
         <h3>Добавьте нового сотрудника</h3>
+        {errorMessage && (
+          <div className="error-message">{errorMessage}</div>
+        )}{' '}
+        {/* Отображение сообщения об ошибке */}
         <form className="add-form d-flex" onSubmit={this.onSubmit}>
           <input
             type="text"
